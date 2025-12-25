@@ -1,0 +1,3 @@
+zcat  gencode.v47.annotation.gtf.gz | grep   protein_coding |perl -alne '{next unless $F[2] eq "gene" ;/gene_name \"(.*?)\";/; print "$F[0]\t$F[3]\t$F[4]\t$1" }' >protein_coding.hg38.position
+bedtools intersect -a core_CMI.bed  -b protein_coding.hg38.position  -wa -wb| bedtools groupby -i - -g 1-4 -c 7 -o collapse >core_CMI_gene.tsv
+intersect -a core_MDD.bed  -b protein_coding.hg38.position  -wa -wb| bedtools groupby -i - -g 1-4 -c 7 -o collapse >core_MDD_gene.tsv

@@ -72,23 +72,7 @@ for(methFile in methFileList){
   fileIndex=gsub(".tab", "", basename(methFile))
   runPMDs("hg38", methFile, paste0("Data/MMSeekR_PMDs/PMDs/", fileIndex))
 }
-# results in Data/MMSeekR_PMDs/PMDs/
 
-##Call PMDs by MethylSeekR using default options
-# results in Data/MethylSeekR_PMDs/ESCA/
-
-##Call PMDs by MethPipe using default options
-# results in Data/MethPipe_PMDs/ESCA/
-
-###BLUEPRINT_Tumor
-##Call PMDs by MMSeekR
-# results in Data/MMSeekR_PMDs/BLUEPRINT_Tumor/
-
-##Call PMDs by MethylSeekR using default options
-# results in Data/MethylSeekR_PMDs/BLUEPRINT_Tumor/
-
-##Call PMDs by MethPipe using default options
-# results in Data/MMSeekR_PMDs/BLUEPRINT_Tumor/
 
 ###get ESCA_union_PMDs
 cancerTypeCommonPMDs=function(PMDfile, cutoff){
@@ -155,3 +139,4 @@ sharedESCARegions=function(EACPMDFile, ESCCPMDFile, outputFile, type){
   write.table(ESCA_sharedPMDs[,1:3], file=outputFile, sep="\t", row.names = F, col.names=F, quote=F)
 }
 sharedESCARegions("Data/MMSeekR_PMDs/EAC_commonPMDs.bed", "Data/MMSeekR_PMDs/ESCC_commonPMDs.bed","Data/MMSeekR_PMDs/ESCA_sharedPMDs.bed", "Tumor")
+
